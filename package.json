@@ -1,0 +1,43 @@
+{
+  "name": "@yellfage/batching",
+  "version": "1.0.0-beta.1",
+  "author": "Yellfage",
+  "description": "Batching",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm-run-all clear compile declare",
+    "compile": "cross-env NODE_ENV=production webpack --config ./webpack.config.js",
+    "declare": "tsc --project ./tsconfig.json --outDir ./dist --emitDeclarationOnly",
+    "clear": "rimraf -rf ./dist",
+    "eslint": "eslint --report-unused-disable-directives --resolve-plugins-relative-to ./ --ext .js,.ts",
+    "eslint:src": "npm run eslint ./src",
+    "eslint:src:fix": "npm run eslint:src -- -- --fix",
+    "prepublishOnly": "npm-run-all eslint:src:fix build"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yellfage/batching-js.git",
+    "directory": "src"
+  },
+  "devDependencies": {
+    "@yellfage/eslint-config-typescript": "^1.0.0-beta.2",
+    "commitlint": "^17.6.6",
+    "cross-env": "^7.0.3",
+    "esbuild-loader": "^3.0.1",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
